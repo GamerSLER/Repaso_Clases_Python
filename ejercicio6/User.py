@@ -44,8 +44,11 @@ class User:
     def activate(self):
         self.__active = True
 
-    def get_name(self, usrname):
-        self.__username = usrname
+    def get_name(self):
+        return self.__username
+
+    def get_active(self):
+        return self.__active
 
     def __str__(self):
         if self.__active:

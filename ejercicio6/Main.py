@@ -1,3 +1,5 @@
+from functools import reduce
+
 from ejercicio6.User import User, Activity
 
 users = []
@@ -39,9 +41,17 @@ try:
         print(act)
 except ValueError as e:
     print(e)
-# solo_durations = list(map(lambda act: act.get_duration(), actividades))
-# for duration in solo_durations:
-#     print(duration)
-#
-# sum_duration = lambda a, b: a + b
-# # print(sum_duration(act1.get_duration(), act2.get_duration()))
+
+
+solo_activos = list(filter(lambda usr: usr.get_active(), users))
+print("")
+print("Activos: ")
+for act in solo_activos:
+    print(f"\t{act}")
+
+solo_durations = list(map(lambda act: act.get_duration(), actividades))
+for duration in solo_durations:
+    print(f"duración: {duration}")
+
+suma_durations = reduce(lambda cont, act:cont + act.get_duration(), actividades, 0)
+print(f"total duraciónes: {suma_durations}")
